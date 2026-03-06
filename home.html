@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | GitHub Issue Tracker</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind & Daisy UI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-[#F8FAFC] h-screen">
+
+    <!-- Header-Section -->
+    <header class="bg-white py-3 shadow-sm">
+      <section class="w-11/12 flex justify-between items-center mx-auto">
+        <div class="flex items-center gap-2">
+          <img src="./assets/github-logo.png" alt="" class="w-9 h-9"/>
+          <h2 class="font-bold">GitHub Issue Tracker</h2>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <label class="input">
+            <svg
+              class="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input type="search" required placeholder="Search issues..." />
+          </label>
+          <button class="btn btn-primary">+ New Issues</button>
+        </div>
+      </section>
+    </header>
+
+    <main class="w-10/12 mx-auto py-16">
+        <!-- Tab-Btn-Section -->
+        <section class="bg-white p-5 rounded-2xl space-x-3">
+            <button class="btn btn-primary w-28">All</button>
+            <button class="btn btn-outline btn-accent w-28">Open</button>
+            <button class="btn btn-outline btn-accent w-28">Closed</button>
+        </section>
+
+        <!-- display-issue-dashboard -->
+
+         <section class="bg-white p-5 rounded-t-2xl space-x-3 flex justify-between items-center mt-4 shadow-sm">
+            <div class="flex gap-2 items-center">
+                <div class="w-8 h-8">
+                    <img src="./assets/Aperture.png" alt="">
+                </div>
+                <div>
+                    <h3 class="font-semibold text-xl">50 Issues</h3>
+                    <p class="text-[#64748B]">Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-[#00A96E] rounded-full"></div><span>Open</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-[#A855F7] rounded-full"></div><span>Closed</span>
+                </div>
+            </div>
+         </section>
+
+         <!-- card-container-section -->
+          <section class="bg-[#FBFBFB] p-5 shadow-sm">
+            <p>hi</p>
+          </section>
+
+    </main>
+     <!-- JS -->
+      <script src="./scripts/main.js"></script>
+  </body>
+</html>
