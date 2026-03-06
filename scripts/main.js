@@ -1,9 +1,34 @@
+const issueCount = document.getElementById('issue-counter')
+// console.log(issueCount);
+
+
 const loadAllIssues = ()=>{
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res => res.json())
-    .then(issues => displayAllIssues(issues.data))
+    .then(issues => {
+        displayAllIssues(issues.data)
+        issueCount.innerText = issues.data.length 
+    })
 }
+const loadDataForOpen = ()=>{
+    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
+    fetch(url)
+    .then(res => res.json())
+    .then(issues => {
+        dataForOpen(issues.data) 
+    })
+}
+const loadDataForClosed = ()=>{
+    const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
+    fetch(url)
+    .then(res => res.json())
+    .then(issues => {
+        dataForClosed(issues.data) 
+    })
+}
+
+
 
 const displayAllIssues = (issues) =>{
     const cardContainer = document.getElementById('card-container')
@@ -48,3 +73,42 @@ const displayAllIssues = (issues) =>{
 }
 
 loadAllIssues()
+
+
+
+//get all data
+
+const dataForOpen = (issues)=>{
+    const allissues = issues
+    const openIssues = allissues.filter(item => item.status === 'open')
+    issueCount.innerText = openIssues.length
+    // console.log(openIssues);
+    displayAllIssues(openIssues)
+    
+    
+}
+const dataForClosed = (issues)=>{
+    const allissues = issues
+    const closedIssues = allissues.filter(item => item.status === 'closed')
+    issueCount.innerText = closedIssues.length
+    // console.log(closedIssues);
+    displayAllIssues(closedIssues)
+    
+    
+}
+
+
+
+// btnremove active
+
+const activeTab = (e) => {
+//   console.log(e.target);
+
+  const btns = document.querySelectorAll(".btn");
+  btns.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  e.target.classList.add("active");
+};
+
+
