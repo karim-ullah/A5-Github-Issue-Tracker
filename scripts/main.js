@@ -7,7 +7,10 @@ const loadSearch = () =>{
      const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`
      fetch(url)
      .then(res => res.json())
-     .then(issue => displayAllIssues(issue.data))
+     .then(issue => {
+        displayAllIssues(issue.data)
+        issueCount.innerText = issue.data.length
+     })
      
 }
 
@@ -139,7 +142,7 @@ loadAllIssues()
 
 const showLabel = (labels) =>{
     
-    const labelEl = labels.map(label => `<button class="${label === 'bug' ? 'bg-[#FEECEC]' : label === 'help wanted'? 'bg-[#FFF8DB]' : label === 'enhancement' ? 'bg-amber-200' : label === 'documentation' ? 'bg-purple-100' : 'bg-purple-50' } border-1 border-[#FDE68A] text-[#D97706] text-sm px-2 py-1 rounded-full line-clamp-2">${label === 'bug' ? '<i class="fa-solid fa-bug"></i>' : label === 'help wanted'? '<i class="fa-solid fa-life-ring"></i>' : label === 'enhancement' ? '<i class="fa-solid fa-angles-up"></i>' : '<i class="fa-solid fa-face-grin-tongue"></i>'  } ${label}</button>`)
+    const labelEl = labels.map(label => `<button class="${label === 'bug' ? 'bg-[#FEECEC]' : label === 'help wanted'? 'bg-[#FFF8DB]' : label === 'enhancement' ? 'bg-amber-200' : label === 'documentation' ? 'bg-purple-100' : 'bg-purple-50' } cursor-pointer border-1 border-[#FDE68A] text-[#D97706] text-sm px-2 py-1 rounded-full line-clamp-2">${label === 'bug' ? '<i class="fa-solid fa-bug"></i>' : label === 'help wanted'? '<i class="fa-solid fa-life-ring"></i>' : label === 'enhancement' ? '<i class="fa-solid fa-angles-up"></i>' : '<i class="fa-solid fa-face-grin-tongue"></i>'  } ${label}</button>`)
     return labelEl.join(" ")
 }
 
