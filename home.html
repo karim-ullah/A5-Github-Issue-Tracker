@@ -35,18 +35,17 @@
         font-family: "Geist", sans-serif;
       }
       .active {
-        background-color:#422AD5 ;
+        background-color: #422ad5;
         color: white;
       }
     </style>
   </head>
   <body class="bg-[#F8FAFC]">
-
     <!-- Header-Section -->
     <header class="bg-white py-3 shadow-sm sticky top-0">
       <section class="w-11/12 flex justify-between items-center mx-auto">
         <div class="flex items-center gap-2">
-          <img src="./assets/github-logo.png" alt="" class="w-9 h-9"/>
+          <img src="./assets/github-logo.png" alt="" class="w-9 h-9" />
           <h2 class="font-bold">GitHub Issue Tracker</h2>
         </div>
 
@@ -68,52 +67,90 @@
                 <path d="m21 21-4.3-4.3"></path>
               </g>
             </svg>
-            <input type="search" required placeholder="Search issues..." />
+            <input id="search-input" type="search" required placeholder="Search issues..." />
           </label>
-          <button class="btn btn-primary">+ New Issues</button>
+          <button onclick="loadSearch()" class="btn btn-primary">+ New Issues</button>
         </div>
       </section>
     </header>
 
-    <main class="w-10/12 mx-auto py-16">
-        <!-- Tab-Btn-Section -->
-        <section class="bg-white p-5 rounded-2xl space-x-3">
-            <button onclick="activeTab(event); loadAllIssues()" class="btn btn-tab active btn-outline btn-accent w-28">All</button>
-            <button onclick="activeTab(event); loadDataForOpen()" class="btn btn-tab btn-outline btn-accent w-28">Open</button>
-            <button onclick="activeTab(event); loadDataForClosed()" class="btn btn-tab btn-outline btn-accent w-28">Closed</button>
-        </section>
+    <main class="w-11/12 md:h-10/12 mx-auto py-16">
+      <!-- Tab-Btn-Section -->
+      <section class="bg-white p-5 rounded-2xl space-x-3 flex flex-wrap justify-center md:justify-start items-center gap-y-3">
+        <button
+          onclick="
+            activeTab(event);
+            loadAllIssues();
+          "
+          class="btn btn-tab active btn-outline btn-accent w-28"
+        >
+          All
+        </button>
+        <button
+          onclick="
+            activeTab(event);
+            loadDataForOpen();
+          "
+          class="btn btn-tab btn-outline btn-accent w-28"
+        >
+          Open
+        </button>
+        <button
+          onclick="
+            activeTab(event);
+            loadDataForClosed();
+          "
+          class="btn btn-tab btn-outline btn-accent w-28"
+        >
+          Closed
+        </button>
+      </section>
 
-        <!-- display-issue-dashboard -->
+      <!-- display-issue-dashboard -->
 
-         <section class="bg-white p-5 rounded-t-2xl space-x-3 flex justify-between items-center mt-4 shadow-sm">
-            <div class="flex gap-2 items-center">
-                <div class="w-8 h-8">
-                    <img src="./assets/Aperture.png" alt="">
-                </div>
-                <div>
-                    <h3 class="font-semibold text-xl"><span id="issue-counter" class="mr-2">50</span>Issues</h3>
-                    <p class="text-[#64748B]">Track and manage your project issues</p>
-                </div>
-            </div>
-            <div class="flex gap-3">
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-[#00A96E] rounded-full"></div><span>Open</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-[#A855F7] rounded-full"></div><span>Closed</span>
-                </div>
-            </div>
-         </section>
+      <section
+        class="bg-white p-5 rounded-t-2xl space-x-3 flex justify-between items-center mt-4 shadow-sm"
+      >
+        <div class="flex gap-2 items-center">
+          <div class="w-8 h-8">
+            <img src="./assets/Aperture.png" alt="" />
+          </div>
+          <div>
+            <h3 class="font-semibold text-sm md:text-xl">
+              <span id="issue-counter" class="mr-2">0</span>Issues
+            </h3>
+            <p class="text-[#64748B]">Track and manage your project issues</p>
+          </div>
+        </div>
+        <div class=" sm:flex gap-3">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-[#00A96E] rounded-full"></div>
+            <span>Open</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-[#A855F7] rounded-full"></div>
+            <span>Closed</span>
+          </div>
+        </div>
+      </section>
 
-         <!-- card-container-section -->
-          <section class="bg-[#FBFBFB] p-5 shadow-sm grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" id="card-container">
-
-            
-
-          </section>
-
+      <!-- card-container-section -->
+      <section
+        class="bg-[#FBFBFB] p-5 shadow-sm grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3"
+        id="card-container"
+      ></section>
     </main>
-     <!-- JS -->
-      <script src="./scripts/main.js"></script>
+
+    <!-- Modal -->
+
+    <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  
+</dialog>
+
+    <!-- JS -->
+    <script src="./scripts/main.js"></script>
   </body>
 </html>
