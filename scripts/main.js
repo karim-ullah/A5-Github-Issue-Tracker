@@ -1,7 +1,22 @@
 const issueCount = document.getElementById('issue-counter')
 // console.log(issueCount);
 
+//Manage Spinner
+
+const spinner = (status)=>{
+    const spinner = document.getElementById('spinner')
+    const cardContainer = document.getElementById('card-container')
+    if(status === true){
+        spinner.classList.remove('hidden')
+        cardContainer.classList.add('hidden')
+    }else{
+        spinner.classList.add('hidden')
+        cardContainer.classList.remove('hidden')
+    }
+}
+
 const loadSearch = () =>{
+    spinner(true)
      const serachInput = document.getElementById('search-input')
      const searchValue = serachInput.value.toLowerCase().trim()
      const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`
@@ -15,6 +30,7 @@ const loadSearch = () =>{
 }
 
 const loadAllIssues = ()=>{
+    spinner(true)
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res => res.json())
@@ -24,6 +40,7 @@ const loadAllIssues = ()=>{
     })
 }
 const loadDataForOpen = ()=>{
+    spinner(true)
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res => res.json())
@@ -32,6 +49,7 @@ const loadDataForOpen = ()=>{
     })
 }
 const loadDataForClosed = ()=>{
+    spinner(true)
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues"
     fetch(url)
     .then(res => res.json())
@@ -41,6 +59,7 @@ const loadDataForClosed = ()=>{
 }
 
 const loadSingleIssue = (id) =>{
+    spinner(true)
     const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
     fetch(url)
     .then(res => res.json())
@@ -58,7 +77,7 @@ const displaySingleIssue = (issue) =>{
     <div class="modal-box space-y-3">
     <h3 class="text-lg font-bold">${issue.title}</h3>
     <div>
-        <button class="bg-[#00A96E] text-white px-4 rounded-full">${issue.status}</button>
+        <button class="${issue.status === 'open'? 'bg-[#00A96E]' : 'bg-[#A855F7]'} text-white px-4 rounded-full">${issue.status}</button>
         <span>・Opened by ${issue.author}・${new Date(issue.createdAt).toLocaleDateString()}</span>
     </div>
     <div class="flex gap-1 items-center">
@@ -88,6 +107,7 @@ const displaySingleIssue = (issue) =>{
     
     `
     my_modal_5.showModal()
+    spinner(false)
 }
 
 
@@ -133,10 +153,12 @@ const displayAllIssues = (issues) =>{
         
         
     })
-    
+    spinner(false)
 }
 
 loadAllIssues()
+
+
 
 // function for showing labels
 
